@@ -9,7 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import z from "zod";
 import { Loader2 } from "lucide-react";
-import router from "next/router";
+import { useRouter } from "next/navigation";
 
 
 const registerSchema = z.object({
@@ -19,6 +19,8 @@ const registerSchema = z.object({
 });
 
 const SignUpForm = () => {
+    const router = useRouter();
+
     const form = useForm<z.infer<typeof registerSchema>>({
         resolver: zodResolver(registerSchema),
         defaultValues: {
